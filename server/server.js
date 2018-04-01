@@ -71,7 +71,11 @@ setTimeout(() => {
             i++;
             if (i > _tickers.length - 1) {
                 console.log('end');
-                fs.writeFile('./JSON_files/notFound.json', arrNullCompanies, function (err) {
+                fs.writeFile('./JSON_files/notFound.json', JSON.stringify(arrNullCompanies), function (err) {
+                    if (err) throw err;
+                    //console.log('Saved!');
+                });
+                fs.writeFile('./JSON_files/goodTickers.json', JSON.stringify(arrHealthyCompanies), function (err) {
                     if (err) throw err;
                     //console.log('Saved!');
                 });
