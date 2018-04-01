@@ -6,6 +6,8 @@ const claves = require('./keys');
 const functions = require('./functions-for-server');
 var app = express();
 
+let arrayHolas = [];
+
 app.use(cors({
     methods: ["POST"]
 }));
@@ -26,7 +28,7 @@ app.get("/getTickers", function (req, res) {
     }, 10000);*/
     let obj = functions.functions.reqest(options).then(function(pres){
         let tickers = JSON.parse(pres);
-        // console.log('assigned', tickers);
+        console.log(arrayHolas);
         let i = 0
         let arr = [];
         let interval = setInterval(() => {
@@ -45,5 +47,9 @@ app.get("/getTickers", function (req, res) {
         });
     });
 });
+
+for (let i = 0; i < 50; i++) {
+    arrayHolas.push(functions.functions.hola());
+}
 
 
