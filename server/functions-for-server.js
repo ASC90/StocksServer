@@ -1,7 +1,6 @@
 var https = require("https");
 var functions = {
-    reqest: asyncReq,
-    hola: saluda
+    reqest: asyncReq
 }
 
 // Request
@@ -24,11 +23,6 @@ async function asyncReq(options) {
     let resp = await req(options);
     return resp;
 }
-// Test
-function saluda() {
-    return 'hola';
-}
-// Get all companies
 
 
 exports.functions = functions;
