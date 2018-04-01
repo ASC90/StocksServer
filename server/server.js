@@ -44,12 +44,14 @@ app.get("/getTickers", function (req, res) {
 });
 let arrHealthyCompanies = [];
 let arrNullCompanies = [];
-let reqOK = false;
-if (reqOK) {
-    setTimeout(() => {
-        let _tickers = jsonTickers;
-        let i = 0
-        let interval = setInterval(() => {
+setTimeout(() => {
+    let _tickers = jsonTickers;
+    let i = 0
+    let interval = setInterval(() => {
+        if (_tickers == undefined) {
+            console.log("no hay tickers, haz una request de http://localhost:8080/getTickers");
+            clearInterval(interval);
+        } else {
             console.log('tickers', _tickers[i].symbol);
             //
             let companyTicker = _tickers[i].symbol;
@@ -75,12 +77,11 @@ if (reqOK) {
                 });
                 clearInterval(interval);
             }
-        }, 1500);
-    }, 1000);
-}
+        }
+    }, 1500);
+}, 1000);
 
 app.get("/test", function (req, res) {
-    reqOK = true;
     res.send({ a: arrHealthyCompanies, b: arrNullCompanies });
 });
 
