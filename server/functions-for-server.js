@@ -10,6 +10,9 @@ function req(options) {
         https.get(options, function (res) {
             res.on("data", data => {
                 body += data;
+                
+            });
+            res.on("end", function(){
                 resolve(body);
             });
         }) 
