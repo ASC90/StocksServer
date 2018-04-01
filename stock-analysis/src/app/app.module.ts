@@ -10,6 +10,7 @@ import { StatisticsService } from './services/statistics.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BaseStadisticsComponent } from './components/base-stadistics/base-stadistics.component';
+import { AnalysisCardComponent } from './components/analysis-card/analysis-card.component';
 
 
 const appRoutes: Routes = [
@@ -25,7 +26,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    BaseStadisticsComponent
+    BaseStadisticsComponent,
+    AnalysisCardComponent
   ],
   imports: [
     BrowserModule,

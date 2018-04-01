@@ -44,6 +44,7 @@ app.get("/getTickers", function (req, res) {
 });
 let arrHealthyCompanies = [];
 let arrNullCompanies = [];
+let companyDetails = [];
 setTimeout(() => {
     let _tickers = jsonTickers;
     let i = 0
@@ -63,6 +64,9 @@ setTimeout(() => {
                         if (err) throw err;
                         //console.log('Saved!');
                     });
+                    let objDetails = functions.functions.reqest("https://api.iextrading.com/1.0/stock/" + companyTicker + "/company").then(function(data) {
+                        companyDetails.push(JSON.parse(data));
+                    });
                 } else {
                     arrNullCompanies.push(companyTicker);
                 }
@@ -76,6 +80,10 @@ setTimeout(() => {
                     //console.log('Saved!');
                 });
                 fs.writeFile('../stock-analysis/src/assets/JSON_files/goodTickers.json', JSON.stringify(arrHealthyCompanies), function (err) {
+                    if (err) throw err;
+                    //console.log('Saved!');
+                });
+                fs.writeFile('../stock-analysis/src/assets/JSON_files/companyDetails.json', JSON.stringify(companyDetails), function (err) {
                     if (err) throw err;
                     //console.log('Saved!');
                 });

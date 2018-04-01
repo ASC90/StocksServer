@@ -13,4 +13,7 @@ export class StatisticsService {
   getGoodTickersJSON(): Observable<any> {
     return this.http.get('assets/JSON_files/goodTickers.json');
   }
+  getDataByTicker(ticker: string): Observable<any> {
+    return this.http.get('assets/JSON_files/' + ticker + '.json');
+  }
 }
