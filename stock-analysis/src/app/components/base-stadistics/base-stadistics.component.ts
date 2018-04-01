@@ -13,7 +13,9 @@ export class BaseStadisticsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.service.getGoodTickersJSON().subscribe(res => console.log('json', res));
+    this.service.getGoodTickersJSON().subscribe(res => {
+      console.log('json', res);
+    });
   }
 
 }

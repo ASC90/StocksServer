@@ -36,7 +36,7 @@ app.get("/getTickers", function (req, res) {
     let obj = functions.functions.reqest(options).then(function (pres) {
         let tickers = JSON.parse(pres);
         res.send(tickers);
-        fs.writeFile('./JSON_files/tickers.json', pres, function (err) {
+        fs.writeFile('../stock-analysis/src/assets/JSON_files/tickers.json', pres, function (err) {
             if (err) throw err;
             //console.log('Saved!');
         });
@@ -59,7 +59,7 @@ setTimeout(() => {
                 let company = JSON.parse(pres);
                 if (company.dataset_data) {
                     arrHealthyCompanies.push(companyTicker);
-                    fs.writeFile('./JSON_files/' + companyTicker + '.json', pres, function (err) {
+                    fs.writeFile('../stock-analysis/src/assets/JSON_files/' + companyTicker + '.json', pres, function (err) {
                         if (err) throw err;
                         //console.log('Saved!');
                     });
@@ -71,11 +71,11 @@ setTimeout(() => {
             i++;
             if (i > _tickers.length - 1) {
                 console.log('end');
-                fs.writeFile('./JSON_files/notFound.json', JSON.stringify(arrNullCompanies), function (err) {
+                fs.writeFile('../stock-analysis/src/assets/JSON_files/notFound.json', JSON.stringify(arrNullCompanies), function (err) {
                     if (err) throw err;
                     //console.log('Saved!');
                 });
-                fs.writeFile('./JSON_files/goodTickers.json', JSON.stringify(arrHealthyCompanies), function (err) {
+                fs.writeFile('../stock-analysis/src/assets/JSON_files/goodTickers.json', JSON.stringify(arrHealthyCompanies), function (err) {
                     if (err) throw err;
                     //console.log('Saved!');
                 });
