@@ -24,10 +24,15 @@ app.get("/getTickers", function (req, res) {
     setTimeout(() => {
         console.log('obj', obj);
     }, 10000);*/
-    res.send(fs.writeFile('./tickers.json', functions.functions.reqest(options), function (err) {
-        if (err) throw err;
-        console.log('Saved!');
-    }));
+    let obj = functions.functions.reqest(options);
+    setTimeout(() => {
+        fs.writeFile('./tickers.json', JSON.stringify(obj), function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+        });
+    }, 10000);
+   
+    res.send();
 });
 
 
