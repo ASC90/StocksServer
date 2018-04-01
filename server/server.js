@@ -25,14 +25,25 @@ app.get("/getTickers", function (req, res) {
         console.log('obj', obj);
     }, 10000);*/
     let obj = functions.functions.reqest(options).then(function(pres){
-        console.log('assigned', pres);
+        let tickers = JSON.parse(pres);
+        // console.log('assigned', tickers);
+        let i = 0
+        let arr = [];
+        let interval = setInterval(() => {
+            console.log('tickers', tickers[i].symbol);
+            arr.push(tickers[i].symbol);
+            i ++;
+            if (i > 10) {
+                console.log('end');
+                res.send(arr);
+                clearInterval(interval);
+            }
+        }, 10);
         fs.writeFile('./tickers.json', pres, function (err) {
             if (err) throw err;
-            console.log('Saved!');
+            //console.log('Saved!');
         });
-        res.send(pres);
     });
-    
 });
 
 

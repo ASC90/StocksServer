@@ -24,4 +24,7 @@ async function asyncReq(options) {
     return resp;
 }
 
+// Get all companies
+
+
 exports.functions = functions;
