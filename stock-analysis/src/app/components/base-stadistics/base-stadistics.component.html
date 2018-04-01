@@ -1,9 +1,7 @@
 <div class="container">
-  <div class="container">
-    <div class="row">
-      <div *ngFor="let item of list; index as i" class="col s12 m6 l6 xl4">
-        <app-analysis-card [data]="item" [ticker]="tickerList[i]"></app-analysis-card>
-      </div>
-    </div>
-  </div>
+  <ul>
+    <li *ngFor="let item of list; index as i">
+      <a routerLink="/details/{{item.ticker}}">Ticker: {{item.ticker}}, rate: {{item.data}} </a>
+    </li>
+  </ul>
 </div>

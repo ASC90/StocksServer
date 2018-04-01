@@ -15,6 +15,7 @@ import { AnalysisCardComponent } from './components/analysis-card/analysis-card.
 
 const appRoutes: Routes = [
   { path: 'statistics', component:  BaseStadisticsComponent},
+  { path: 'details/:ticker', component:  AnalysisCardComponent},
   {
     path: '',
     redirectTo: '/statistics',

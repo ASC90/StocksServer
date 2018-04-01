@@ -1,0 +1,9 @@
+li {
+    display: flex;
+}
+.arr-dow {
+    color: red;
+}
+.arr-up {
+    color: green;
+}
