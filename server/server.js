@@ -8,10 +8,10 @@ var jsonTickers;
 var app = express();
 // const path = require('path');
 
-fs.stat('./JSON_files/tickers.json', function (err, stat) {
+fs.stat('../stock-analysis/src/assets/JSON_files/tickers.json', function (err, stat) {
     if (err == null) {
         console.log('File exists');
-        jsonTickers = require('./JSON_files/tickers.json');
+        jsonTickers = require('../stock-analysis/src/assets/JSON_files/tickers.json');
     }
 });
 
