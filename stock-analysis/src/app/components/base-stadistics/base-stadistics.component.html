@@ -1,7 +1,25 @@
 <div class="container">
+  <div *ngIf="!isDataLoaded" class="progress">
+    Calulando...
+    <div class="determinate" [style.width]="percentDataLoaded + '%'"></div>
+  </div>
   <div *ngIf="isDataLoaded">
-    <ngx-datatable [rows]="rows" [columns]="columns">
-    </ngx-datatable>
+    <table>
+      <thead>
+        <tr>
+          <th class="sort-head" (click)="sortByTicker()">{{columns.ticker}}</th>
+          <th class="sort-head" (click)="sortByMax()">{{columns.data}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of rows">
+          <td>
+            <a routerLink="/details/{{row.ticker}}">{{row.ticker}}</a>
+          </td>
+          <td>{{row.data}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <ul>
     <li *ngFor="let item of list; index as i">
