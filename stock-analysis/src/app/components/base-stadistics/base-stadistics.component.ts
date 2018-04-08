@@ -9,6 +9,10 @@ import { StatisticsService } from '../../services/statistics.service';
 export class BaseStadisticsComponent implements OnInit {
   list = [];
   tickerList = [];
+  // datatable
+  rows = [];
+  columns = [{ticker: 'ticker', data: '% from max'}];
+  isDataLoaded = false;
   constructor(
     private service: StatisticsService
   ) { }
@@ -19,8 +23,12 @@ export class BaseStadisticsComponent implements OnInit {
       for (let index = 0; index < res.length; index++) {
         let ticker = res[index];
         this.service.getDataByTicker(ticker).subscribe(data => {
+          this.rows.push({ ticker: ticker, data: this.historicMax(data)});
           this.list.push({ ticker: ticker, data: this.historicMax(data) });
           this.list.sort(function (a, b) { return a.data - b.data });
+          if (index == res.length - 1) {
+            this.isDataLoaded = true;
+          }
         });
       } 
     });

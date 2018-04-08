@@ -4,6 +4,7 @@ import { MaterializeModule } from 'angular2-materialize';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { StatisticsService } from './services/statistics.service';
 
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
       { enableTracing: true }
     ),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDatatableModule
   ],
   providers: [ StatisticsService ],
   bootstrap: [AppComponent]

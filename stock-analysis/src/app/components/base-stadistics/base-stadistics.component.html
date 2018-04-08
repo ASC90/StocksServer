@@ -1,4 +1,8 @@
 <div class="container">
+  <div *ngIf="isDataLoaded">
+    <ngx-datatable [rows]="rows" [columns]="columns">
+    </ngx-datatable>
+  </div>
   <ul>
     <li *ngFor="let item of list; index as i">
       <a routerLink="/details/{{item.ticker}}">Ticker: {{item.ticker}}, rate: {{item.data}} </a>
