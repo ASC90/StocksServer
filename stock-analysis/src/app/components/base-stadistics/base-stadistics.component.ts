@@ -82,10 +82,10 @@ export class BaseStadisticsComponent implements OnInit {
 
         break;
       case 1:
-        this.rows.sort(function (a, b) { return a.ticker - b.ticker });
+        this.rows.sort(function (a, b) { return -1 });
         break;
       case 2:
-      this.rows.sort(function (a, b) { return b.ticker - a.ticker });
+      this.rows.sort(function (a, b) { return 1 });
         break;
       default:
 
